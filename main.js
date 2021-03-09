@@ -1,11 +1,10 @@
-
 // Creo un array per raggruppare i 16 numeri
 var bomb = [];
-
+var safe = [];
 
 
 console.log(bombField(bomb));
-
+console.log(start(safe,bomb));
 
 // Funzioni
 // Il computer deve generare 16 numeri casuali tra 1 e 100.
@@ -32,4 +31,21 @@ function randomNumber(min, max) {
   } else {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
+}
+
+// In seguito deve chiedere all’utente (100 - 16) volte di inserire un numero alla volta, sempre compreso tra 1 e 100.
+
+// Creo un ciclo while che va da 100 - 16
+
+function start(safe, bomb) {
+  while (safe.length < 100 - 16) {
+    var user = parseInt(prompt("Dammi un numero:"));
+    // Controllo che il numero non sia già inserito nella safe e pusho
+    if (!safe.includes(user)) {
+      safe.push(user)
+    } else {
+      return safe.length;
+    }
+  }
+
 }
