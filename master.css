@@ -1,0 +1,26 @@
+/* #bomb {
+  display: flex;
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+#bomb i {
+  font-size: 100px;
+  animation-name: bomba;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes bomba {
+  0% {
+    transform: scale(1.5);
+    color: red;
+  }
+} */
+
+
+.field > *{
+  width: 80px;
+  height: 80px;
+}
