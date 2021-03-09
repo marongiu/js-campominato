@@ -56,6 +56,7 @@ function start(safe) {
     // Se nell'array bomba è incluso user allora ho perso
     if (bomb.includes(user)) {
       console.log("Hai perso!");
+      document.getElementById('bomb').innerHTML = '<i class="fas fa-bomb">'+ '</i>' + "HAI PERSO!";
       return safe.length;
     }
   }
