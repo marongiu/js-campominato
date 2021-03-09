@@ -37,13 +37,19 @@ function randomNumber(min, max) {
 
 // Creo un ciclo while che va da 100 - 16
 
-function start(safe, bomb) {
+function start(safe) {
   while (safe.length < 100 - 16) {
     var user = parseInt(prompt("Dammi un numero:"));
     // Controllo che il numero non sia già inserito nella safe e pusho
     if (!safe.includes(user)) {
       safe.push(user)
     } else {
+      console.log("Hai inserito due volte lo stesso numero!");
+      return safe.length;
+    }
+// Se nell'array bomba è incluso user allora ho perso
+    if (bomb.includes(user)) {
+      console.log("Hai perso!");
       return safe.length;
     }
   }
