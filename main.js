@@ -40,6 +40,12 @@ function randomNumber(min, max) {
 function start(safe) {
   while (safe.length < 100 - 16) {
     var user = parseInt(prompt("Dammi un numero:"));
+    // Controlli
+    if (isNaN(user)) {
+      location.reload(alert("Non hai inserito un numero!"));
+    } else if (1 < user && user > 100) {
+      location.reload(alert("Devi inserire un numero tra 1 e 100"));
+    }
     // Controllo che il numero non sia già inserito nella safe e pusho
     if (!safe.includes(user)) {
       safe.push(user)
@@ -47,7 +53,7 @@ function start(safe) {
       console.log("Hai inserito due volte lo stesso numero!");
       return safe.length;
     }
-// Se nell'array bomba è incluso user allora ho perso
+    // Se nell'array bomba è incluso user allora ho perso
     if (bomb.includes(user)) {
       console.log("Hai perso!");
       return safe.length;
