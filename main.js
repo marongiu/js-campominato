@@ -3,6 +3,33 @@ var bomb = [];
 var safe = [];
 
 
+var difficulty = true;
+while (difficulty) {
+  var selezionaDifficolta = parseInt(prompt("0 = easy 1 = medium 2 = hard"));
+
+  difficulty = false;
+  switch (selezionaDifficolta) {
+    case 0:
+    var maxNumber = 100;
+    console.log(maxNumber);
+    break;
+
+    case 1:
+    var maxNumber = 80;
+    console.log(maxNumber);
+    break;
+
+    case 2:
+    var maxNumber = 50;
+    console.log(maxNumber);
+    break;
+    default:
+    difficulty = true;
+    break;
+  }
+}
+
+
 console.log(bombField(bomb));
 console.log(start(safe,bomb));
 
@@ -12,7 +39,7 @@ console.log(start(safe,bomb));
 function bombField(bomb) {
   // Utilizzo il ciclo while per generare 16 numeri da includere successivamente in bomb.array
   while (bomb.length < 16) {
-    var numberBomb = randomNumber(1, 100)
+    var numberBomb = randomNumber(1, maxNumber)
     // Ora devo evitare che il numero venga duplicato due volte utilizzando la funzione includes
     // Utilizzando il not controllo se il numero non è incluso
     if (!bomb.includes(numberBomb)) {
@@ -38,12 +65,14 @@ function randomNumber(min, max) {
 // Creo un ciclo while che va da 100 - 16
 
 function start(safe) {
-  while (safe.length < 100 - 16) {
+  while (safe.length < maxNumber - 16) {
     var user = parseInt(prompt("Dammi un numero:"));
     // Controlli
     if (isNaN(user)) {
       location.reload(alert("Non hai inserito un numero!"));
-    } else if (1 < user && user > 100) {
+    } else if (user > 100) {
+      location.reload(alert("Devi inserire un numero tra 1 e 100"));
+    } else if (user < 1) {
       location.reload(alert("Devi inserire un numero tra 1 e 100"));
     }
     // Controllo che il numero non sia già inserito nella safe e pusho
